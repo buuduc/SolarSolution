@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolarSolution"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="357.333" Width="633.333"
+        Loaded="Loaded_Windows">
     <Grid>
-        
+        <TabControl HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="auto">
+            <TabItem Header="TabItem">
+
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>

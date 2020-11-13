@@ -24,5 +24,12 @@ namespace SolarSolution
         {
             InitializeComponent();
         }
+
+        private void Loaded_Windows(object sender, RoutedEventArgs e)
+        {
+            NormalConsume normalConsume = new NormalConsume(5000000);
+
+            
+        }
     }
 }
