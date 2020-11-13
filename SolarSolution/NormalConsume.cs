@@ -22,7 +22,6 @@ namespace SolarSolution
             {
                 return usedPrice / Price;
             }
-
         }
         private SortedList rankElectricWorkList = new SortedList();
         public Hashtable soGioNangHashtable= new Hashtable();
@@ -37,6 +36,16 @@ namespace SolarSolution
         {
             ReadDataExcel();
             DevinePriceWork();
+            savedMoney();
+        }
+
+        private void savedMoney()
+        {
+            for (double i = rankElectricWorkList.Count; i >= 1; i--)
+            {
+                rankElectricWork E = (rankElectricWork)rankElectricWorkList[i];
+
+            }
         }
 
         private void DevinePriceWork()
