@@ -10,42 +10,57 @@ using SolarSolution.Properties;
 
 namespace SolarSolution
 {
-    class NormalConsume
+    class NormalConsume: MainWindow
     {
-        struct rankElectricWork
-        {
-            public double Price;
-            public double quantityAllowed;
-            public double usedPrice;
-
-            public double UsedWork()
-            {
-                return usedPrice / Price;
-            }
-        }
-        private SortedList rankElectricWorkList = new SortedList();
-        public Hashtable soGioNangHashtable= new Hashtable();
-        private double consumeMonth;
+        // public struct rankElectricWork
+        // {
+        //     public double Price;
+        //     public double quantityAllowed;
+        //     public double usedPrice;
+        //
+        //     public double UsedWork()
+        //     {
+        //         return usedPrice / Price;
+        //     }
+        // }
+        public SortedList rankElectricWorkList = new SortedList();
+        private double consumeMonth=0;
         public NormalConsume(double consumeMonth)
         {
             this.consumeMonth = consumeMonth;
-            Loaded();
+
+            
         }
 
-        private void Loaded()
+        private double Athapdiem;
+        private double Atrungbinh;
+        private double Acaodiem;
+
+        public NormalConsume(double Athapdiem, double Atrungbinh, double Acaodiem)
         {
-            ReadDataExcel();
-            DevinePriceWork();
-            savedMoney();
+            this.Athapdiem = Athapdiem;
+            this.Atrungbinh = Atrungbinh;
+            this.Acaodiem = Acaodiem;
         }
 
-        private void savedMoney()
+
+        public void Loaded()
         {
-            for (double i = rankElectricWorkList.Count; i >= 1; i--)
+            if (consumeMonth==0)
             {
-                rankElectricWork E = (rankElectricWork)rankElectricWorkList[i];
-
+                WorkOtherCaulation();
             }
+            else
+            {
+                DevinePriceWork();
+            }
+            
+            
+        }
+
+        private void WorkOtherCaulation()
+        {
+
         }
 
         private void DevinePriceWork()
@@ -53,7 +68,7 @@ namespace SolarSolution
             double currentConsume = consumeMonth;
             for (double i =1;i<= rankElectricWorkList.Count;i++)
             {
-                rankElectricWork E =(rankElectricWork)rankElectricWorkList[i];
+                var E =(rankElectricWork)rankElectricWorkList[i];
                 double moneyEachRank = E.Price * E.quantityAllowed;
 
                 if (currentConsume < moneyEachRank)
@@ -82,29 +97,6 @@ namespace SolarSolution
 
         }
 
-        private void ReadDataExcel()
-        {
-            string path = @"D:\TEMP\DataAppSolar\Data.xlsx";
-            using (ExcelPackage MaNS =
-                new ExcelPackage(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
-            {
-                ExcelWorksheet workSheet = MaNS.Workbook.Worksheets[0];
-                for (int i = workSheet.Dimension.Start.Row + 1; i <= workSheet.Dimension.End.Row; i++)
-                {
-                    soGioNangHashtable.Add(workSheet.Cells[i, 2].Value, workSheet.Cells[i, 3].Value);
-                }
-
-                workSheet = MaNS.Workbook.Worksheets[1];
-                for (int i = workSheet.Dimension.Start.Row + 1; i <= workSheet.Dimension.End.Row; i++)
-                {
-                    rankElectricWork E= new rankElectricWork();
-                    E.Price = (double) workSheet.Cells[i, 2].Value;
-                    E.quantityAllowed = (double) workSheet.Cells[i, 3].Value;
-                    rankElectricWorkList.Add(workSheet.Cells[i, 1].Value,E);
-                    // rankElectricWorkPrice.Add(, );
-                    // rankElectricWorkCount.Add(workSheet.Cells[i, 1].Value, );
-                }
-            }
-        }
+        
     }
 }

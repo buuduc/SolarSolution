@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OfficeOpenXml;
+using System.IO;
+
 
 namespace SolarSolution
 {
@@ -20,6 +24,9 @@ namespace SolarSolution
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Hashtable soGioNangHashtable = new Hashtable();
+        private NormalConsume normalConsume;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,9 +34,81 @@ namespace SolarSolution
 
         private void Loaded_Windows(object sender, RoutedEventArgs e)
         {
-            NormalConsume normalConsume = new NormalConsume(5000000);
-
+          
+           ReadDataExcel(2);
+          
             
         }
+        public struct rankElectricWork
+        {
+            public double Price;
+            public double quantityAllowed;
+            public double usedPrice;
+
+            public double UsedWork => usedPrice / Price;
+            public double SavedWork;
+            public double SavedPrice => SavedWork * Price;
+            
+        }
+        private void ReadDataExcel(int index)
+        {
+            
+            SortedList rankE= new SortedList();
+            string path = @"D:\TEMP\DataAppSolar\Data.xlsx";
+            using (ExcelPackage MaNS =
+                new ExcelPackage(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+            {
+                ExcelWorksheet workSheet = MaNS.Workbook.Worksheets[0];
+                for (int i = workSheet.Dimension.Start.Row + 1; i <= workSheet.Dimension.End.Row; i++)
+                {
+                    soGioNangHashtable.Add(workSheet.Cells[i, 2].Value, workSheet.Cells[i, 3].Value);
+                }
+
+                
+                workSheet = MaNS.Workbook.Worksheets[index];
+                switch (index)
+                {
+                    case 1:
+                    {
+                        for (int i = workSheet.Dimension.Start.Row + 1; i <= workSheet.Dimension.End.Row; i++)
+                        {
+                            rankElectricWork E = new rankElectricWork();
+                            E.Price = (double)workSheet.Cells[i, 2].Value;
+                            E.quantityAllowed = (double)workSheet.Cells[i, 3].Value;
+                            rankE.Add(workSheet.Cells[i, 1].Value, E);
+                            // rankElectricWorkPrice.Add(, );
+                            // rankElectricWorkCount.Add(workSheet.Cells[i, 1].Value, );
+                        }
+                        break;
+
+                        }
+                    default:
+                        for (int i = workSheet.Dimension.Start.Row + 1; i <= workSheet.Dimension.End.Row; i++)
+                        {
+                            rankElectricWork E = new rankElectricWork();
+                            E.Price = (double)workSheet.Cells[i, 2].Value;
+                            rankE.Add(workSheet.Cells[i, 1].Value, E);
+                            // rankElectricWorkPrice.Add(, );
+                            // rankElectricWorkCount.Add(workSheet.Cells[i, 1].Value, );
+                        }
+                        break;
+                    
+
+                }
+                
+                
+            }
+
+            normalConsume = new NormalConsume(700,3100,1000)
+            {
+                rankElectricWorkList = rankE
+            };
+            normalConsume.Loaded();
+            SolarCal solarCal = new SolarCal(18.96, 4.88, 258000000,1940);
+            solarCal.savedMoney(normalConsume);
+            solarCal.DoanhThu(25, 3, 3, 0.7);
+
+        }
     }
+
 }
