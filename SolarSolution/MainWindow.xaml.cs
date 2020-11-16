@@ -35,7 +35,7 @@ namespace SolarSolution
         private void Loaded_Windows(object sender, RoutedEventArgs e)
         {
           
-           ReadDataExcel(2);
+           ReadDataExcel(3);
           
             
         }
@@ -45,7 +45,7 @@ namespace SolarSolution
             public double quantityAllowed;
             public double usedPrice;
 
-            public double UsedWork => usedPrice / Price;
+            public double UsedWork;
             public double SavedWork;
             public double SavedPrice => SavedWork * Price;
             
@@ -53,7 +53,7 @@ namespace SolarSolution
         private void ReadDataExcel(int index)
         {
             
-            SortedList rankE= new SortedList();
+            SortedList<object, rankElectricWork> rankE = new SortedList<object, rankElectricWork>();
             string path = @"D:\TEMP\DataAppSolar\Data.xlsx";
             using (ExcelPackage MaNS =
                 new ExcelPackage(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
@@ -104,7 +104,7 @@ namespace SolarSolution
                 rankElectricWorkList = rankE
             };
             normalConsume.Loaded();
-            SolarCal solarCal = new SolarCal(18.96, 4.88, 258000000,1940);
+            SolarCal solarCal = new SolarCal(50, 4.1, 800000000, 1969);
             solarCal.savedMoney(normalConsume);
             solarCal.DoanhThu(25, 3, 3, 0.7);
 

@@ -23,8 +23,8 @@ namespace SolarSolution
         //         return usedPrice / Price;
         //     }
         // }
-        public SortedList rankElectricWorkList = new SortedList();
-        private double consumeMonth=0;
+        public SortedList<object,rankElectricWork> rankElectricWorkList = new SortedList<object, rankElectricWork>();
+        public double consumeMonth=0;
         public NormalConsume(double consumeMonth)
         {
             this.consumeMonth = consumeMonth;
@@ -60,7 +60,30 @@ namespace SolarSolution
 
         private void WorkOtherCaulation()
         {
+            var rankElectricWork = rankElectricWorkList["Thấp điểm"];
+            rankElectricWork.UsedWork = Athapdiem;
+            rankElectricWork.usedPrice = rankElectricWork.UsedWork * rankElectricWork.Price;
+            rankElectricWorkList["Thấp điểm"]= rankElectricWork;
 
+            rankElectricWork = rankElectricWorkList["Bình thường"];
+            rankElectricWork.UsedWork = Atrungbinh;
+            rankElectricWork.usedPrice = rankElectricWork.UsedWork * rankElectricWork.Price;
+            rankElectricWorkList["Bình thường"] = rankElectricWork;
+
+            rankElectricWork = rankElectricWorkList["Cao điểm"];
+            rankElectricWork.UsedWork = Acaodiem;
+            rankElectricWork.usedPrice = rankElectricWork.UsedWork * rankElectricWork.Price;
+            rankElectricWorkList["Cao điểm"] = rankElectricWork;
+
+            // string[] keyList = new string[3] {"Cao điểm", "Bình thường", "Thấp điểm"};
+            
+            // foreach (string key in keyList)
+            // {
+            //     rankElectricWork = rankElectricWorkList[key];
+            //     rankElectricWork.UsedWork = Atrungbinh;
+            //     rankElectricWork.usedPrice = rankElectricWork.UsedWork * rankElectricWork.Price;
+            //     rankElectricWorkList[key] = rankElectricWork;
+            // }
         }
 
         private void DevinePriceWork()
