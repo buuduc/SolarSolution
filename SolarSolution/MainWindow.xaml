@@ -3,19 +3,186 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:SolarSolution"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="357.333" Width="633.333"
-        Loaded="Loaded_Windows">
-    <Grid>
-        <TabControl HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="auto">
-            <TabItem Header="TabItem">
+        mc:Ignorable="d" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <StackPanel Background="WhiteSmoke">
+        <Grid Height="40">
+            <StackPanel HorizontalAlignment="Left" Margin="20 0">
+                <ComboBox FontSize="15" Width="50" Foreground="#FFA2A2A2" SelectedIndex="0" VerticalAlignment="Center">
+                    <ComboBoxItem Content="EN"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
+                <Button Content="FAQ" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Content="CONTACT" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Content="ORDER STATUS" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Content="MY ACCOUNT" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="ExistBtn">
+                    <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <!-- <Grid Height="100"> -->
+        <!--     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0"> -->
+        <!--         <Button Uid="0" Width="150" Content="HOME" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="1" Width="150" Content="SHOP" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="2" Width="150" Content="BLOG" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="3" Width="150" Content="PAGES" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="4" Width="150" Content="PRODUCTS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="5" Width="150" Content="BRANDS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="6" Width="150" Content="GIFT CARDS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--     </StackPanel> -->
+        <!--     <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/> -->
+        <!-- </Grid> -->
+        <TabControl x:Name="TabControlGeneral" TabStripPlacement="Top" HorizontalAlignment="Stretch" Height="480" SelectionChanged="TabSelectionChanged">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <StackPanel Name="Panel" Cursor="Hand" Orientation="Vertical">
+                                    <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="10,2"/>
+                                    <TextBlock Name="BottomBar" Background="Gold" Height="5" />
+                                </StackPanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="BottomBar" Property="Background" Value="Green" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="Green" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+            <TabItem >
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="D:\GitHub\SolarSolution\SolarSolution\Pictures\cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Bắt đầu" Grid.Column="1" VerticalAlignment="Center"
+                                   FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="139*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="902*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="291,54,0,0" TextWrapping="Wrap" Text="PHẦN MỀM TÍNH TOÁN HIỆU QUẢ LẮP ĐẶT NĂNG LƯỢNG MẶT TRỜI "  TextAlignment="Center" VerticalAlignment="Top" Height="126" Width="562" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+                    <Image Margin="36,79,697,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Height="216" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <Button Style="{DynamicResource RoundCorner}" 
+                                Height="74" 
+                                FontSize="30"
+                                Background="Yellow"
+                                VerticalAlignment="Top" 
+                                Content="Bắt đầu" 
+                                Margin="345,225,356,0" Grid.Column="2" />
 
+
+                </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+
+            <TabItem Height="36" VerticalAlignment="Bottom">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="/Icons/dashboard.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Thông tin" Grid.Column="1" VerticalAlignment="Center"
+                                       FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="173*"/>
+                        <ColumnDefinition Width="901*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="194,22,0,0" TextWrapping="Wrap" Text="Bạn là ? "  TextAlignment="Center" VerticalAlignment="Top" Height="126" Width="207" FontSize="30" FontWeight="Bold" Grid.Column="1"/>
+                    <Image Margin="37,54,696,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Grid.ColumnSpan="2" Height="249" VerticalAlignment="Top"/>
+                    <StackPanel Margin="336,139,276,142" Grid.Column="1">
+                        <RadioButton Content="- Hộ gia đình" Checked="RadioButton_Checked" FontSize="20" />
+                        <RadioButton Content="- Diện kinh doanh" Checked="RadioButton_Checked" FontSize="20"/>
+                        <RadioButton Content="- Diện sản xuất" Checked="RadioButton_Checked" FontSize="20"/>
+
+                    </StackPanel>
+                    <Button Style="{DynamicResource RoundCorner}" 
+                                Height="74" 
+                                FontSize="30"
+                                Background="Yellow"
+                                VerticalAlignment="Top" 
+                                Content="Bắt đầu" 
+                                Margin="644,348,56,0" Grid.Column="1" />
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Height="36" VerticalAlignment="Bottom">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="/Icons/dashboard.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Tiêu thụ" Grid.Column="1" VerticalAlignment="Center"
+                                       FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Margin="472,54,0,0" TextWrapping="Wrap" Text="Bạn là ? "  TextAlignment="Center" VerticalAlignment="Top" Height="69" Width="133" FontSize="30" FontWeight="Bold"/>
+                    <Image Margin="37,54,696,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Height="216" VerticalAlignment="Top"/>
+                    <StackPanel Margin="509,139,276,175"/>
+                    <Button Style="{DynamicResource RoundCorner}" 
+                                Height="74" 
+                                FontSize="30"
+                                Background="Yellow"
+                                VerticalAlignment="Top" 
+                                Content="Bắt đầu" 
+                                Margin="817,348,56,0" />
+
+
+                </Grid>
             </TabItem>
         </TabControl>
-
-    </Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto">
+            <Button x:Name="PreviousBtn" Click="PreviousBtn_clicked" BorderThickness="0" Height="Auto" Margin="40,13,912,-61" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Pictures/Download-Previous-Button-PNG-Free-Download-420x164-For-Designing-Purpose.png"></ImageBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="NextBtn" Click="NextBtn_clicked" Height="Auto" Margin="906,13,46,-61" BorderThickness="0" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Pictures/next-button-icon-12.jpg"></ImageBrush>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </StackPanel>
 </Window>

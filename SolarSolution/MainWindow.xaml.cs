@@ -24,10 +24,10 @@ namespace SolarSolution
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Hashtable soGioNangHashtable = new Hashtable();
-        private NormalConsume normalConsume;
+        public Hashtable soGioNangHashtable = new Hashtable(); // đọc data số giờ nắng từ file database
+        private NormalConsume normalConsume;// đối tượng thể hiện số tiền chi trả 
 
-        public MainWindow()
+        public MainWindow() 
         {
             InitializeComponent();
         }
@@ -108,6 +108,62 @@ namespace SolarSolution
             solarCal.savedMoney(normalConsume);
             solarCal.DoanhThu(25, 3, 3, 0.7);
 
+        }
+
+        private void ExistBtn(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            switch (radioButton.Content)
+            {
+                case "- Hộ gia đình":
+                {
+                    break;
+                }
+                case "- Diện kinh doanh":
+                {
+                    break;
+                }
+                case "Diện sản xuất":
+                {
+                    break;
+                }
+            }
+            
+        }
+
+
+        private void PreviousBtn_clicked(object sender, RoutedEventArgs e)
+        {
+            TabControlGeneral.SelectedIndex -= 1;
+        }
+
+        private void NextBtn_clicked(object sender, RoutedEventArgs e)
+        {
+            TabControlGeneral.SelectedIndex += 1;
+        }
+
+        private void TabSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int maxtab = TabControlGeneral.Items.Count;
+            int curtab = TabControlGeneral.SelectedIndex;
+            if (curtab == 0)
+            {
+                PreviousBtn.IsEnabled=false;
+            }
+            else if(curtab==maxtab-1)
+            {
+                NextBtn.IsEnabled = false;
+            }
+            else
+            {
+                PreviousBtn.IsEnabled = true;
+                NextBtn.IsEnabled = true;
+            }
         }
     }
 
