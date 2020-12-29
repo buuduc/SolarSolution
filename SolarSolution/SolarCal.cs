@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SolarSolution
 {
-    internal class SolarCal : MainWindow
+    public class SolarCal : MainWindow
     {
         private double ammountMonney;
         private readonly double Kwp;

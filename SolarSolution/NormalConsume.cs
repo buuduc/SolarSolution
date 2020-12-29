@@ -10,7 +10,7 @@ using SolarSolution.Properties;
 
 namespace SolarSolution
 {
-    class NormalConsume: MainWindow
+    public class NormalConsume: MainWindow
     {
         // public struct rankElectricWork
         // {
@@ -28,8 +28,10 @@ namespace SolarSolution
         public NormalConsume(double consumeMonth)
         {
             this.consumeMonth = consumeMonth;
-
             
+
+
+
         }
 
         private double Athapdiem;
@@ -41,6 +43,7 @@ namespace SolarSolution
             this.Athapdiem = Athapdiem;
             this.Atrungbinh = Atrungbinh;
             this.Acaodiem = Acaodiem;
+            
         }
 
 
