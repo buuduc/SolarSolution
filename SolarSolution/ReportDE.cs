@@ -14,30 +14,36 @@ namespace SolarSolution
        public ReportDE()
 		{
 			InitializeComponent();
+            InitData();
 		}
 
        public string tenkhachhang
        {
-           set => tenkhachhanglb.Text = Value.ToString();
+           set => tenkhachhanglb.Text = $"{value}";
        }
        public string diachi
        {
-           set => diachilb.Text = Value.ToString();
+           set => diachilb.Text = $"{value}";
        }
         public string dienkinhdoanh
         {
-            set => dienkinhdoanhlb.Text = Value.ToString();
+            set => dienkinhdoanhlb.Text = $"{value}";
         }
-       //  public void InitData()
-       // {
-       //     // tenkhachhanglb.Text = tenkhachhang;
-       //     // diachilb.Text = diachi;
-       //     // dienkinhdoanhlb.Text = dienkinhdoanh;
-       //     
-       // }
+        public void InitData()
+        {
+            tienDientxt.Text = $"{NormalConsume.consumeMonth}";
+            congSuattxt.Text = $"{SolarCal.Kwp}";
+            kinhphitxt.Text = $"{SolarCal.ammountMonney}";
+            soGionangtxt.Text= $"{SolarCal.sunnyTime}";
+
+            // tenkhachhanglb.Text = tenkhachhang;
+            // diachilb.Text = diachi;
+            // dienkinhdoanhlb.Text = dienkinhdoanh;
+
+        }
        public void setRanktable()
        {
-           rankTable.
+           // rankTable.
        }
 	}
 }

@@ -119,10 +119,7 @@ namespace SolarSolution
                 // {
                 //     rankElectricWorkList = rankE
                 // };
-                normalConsume.Loaded();
-                solarCal = new SolarCal(50, 4.1, 800000000, 1969);
-                solarCal.savedMoney(normalConsume);
-                solarCal.DoanhThu(25, 3, 3, 0.7);
+                
 
 
             }
@@ -270,9 +267,13 @@ namespace SolarSolution
             reportDe.dienkinhdoanh = DienKinhDoanh;
             reportDe.NormalConsume = normalConsume;
             reportDe.SolarCal = solarCal;
-            reportDe.InitData();
             reportDe.CreateDocument();
             DocumentPreviewControl.DocumentSource = reportDe;
+            normalConsume.Loaded();
+
+            solarCal = new SolarCal(50, 4.1, 800000000, 1969);
+            solarCal.savedMoney(normalConsume);
+            solarCal.DoanhThu(25, 3, 3, 0.7);
         }
     }
 

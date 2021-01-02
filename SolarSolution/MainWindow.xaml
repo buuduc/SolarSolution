@@ -156,7 +156,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Height="36" VerticalAlignment="Bottom">
+            <TabItem Height="36" VerticalAlignment="Top">
                 <TabItem.HeaderTemplate>
                     <DataTemplate>
                         <Grid HorizontalAlignment="Stretch">
@@ -176,20 +176,63 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="103*"/>
                         <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="410*"/>
+                        <ColumnDefinition Width="126*"/>
+                        <ColumnDefinition Width="284*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock HorizontalAlignment="Left" Margin="124,78,0,0" TextWrapping="Wrap" Text="NHẬP SỐ KWp LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
-                    <Image Margin="37,54,696,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Height="216" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-                    <dxe:TextEdit x:Name="SoKWpLapDatTextBox"  Text="{Binding testthu, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"  Margin="497,78,163,292" RenderTransformOrigin="0.177,0.351" Grid.Column="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="688,78,0,0" TextWrapping="Wrap" Text="KWp"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="124,161,0,0" TextWrapping="Wrap" Text="KINH PHÍ LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
-                    <dxe:TextEdit Margin="497,161,163,209" RenderTransformOrigin="0.177,0.351" Grid.Column="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="688,161,0,0" TextWrapping="Wrap" Text="VNĐ"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="124,244,0,0" TextWrapping="Wrap" Text="KHU VỰC LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
-                    <ComboBox SelectionChanged="khuvuctxtbox_Changed" x:Name="khuvucComboBox" Margin="497,248,127,124" FontSize="30" Height="48" Grid.Column="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="124,327,0,-22" TextWrapping="Wrap" Text="SỐ GIỜ NẮNG: "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
-                    <TextBlock x:Name="SogioNangTxt" HorizontalAlignment="Left" Margin="280,327,0,-22" TextWrapping="Wrap" Text="0: "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="368,327,0,-22" TextWrapping="Wrap" Text="GIỜ "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,78,0,0" TextWrapping="Wrap" Text="NHẬP SỐ KWp LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <Image Margin="37,54,128,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Height="216" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <dxe:TextEdit x:Name="SoKWpLapDatTextBox"  Text="{Binding testthu, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"  Margin="245,78,163,292" RenderTransformOrigin="0.177,0.351" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="436,78,0,0" TextWrapping="Wrap" Text="KWp"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,161,0,0" TextWrapping="Wrap" Text="KINH PHÍ LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <dxe:TextEdit Margin="245,161,163,209" RenderTransformOrigin="0.177,0.351" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="436,161,0,0" TextWrapping="Wrap" Text="VNĐ"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,244,0,0" TextWrapping="Wrap" Text="KHU VỰC LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <ComboBox SelectionChanged="khuvuctxtbox_Changed" x:Name="khuvucComboBox" Margin="245,248,127,124" FontSize="30" Height="48" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,327,0,-22" TextWrapping="Wrap" Text="SỐ GIỜ NẮNG: "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="SogioNangTxt" HorizontalAlignment="Left" Margin="28,327,0,-22" TextWrapping="Wrap" Text="0: "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="116,327,0,-22" TextWrapping="Wrap" Text="GIỜ "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="3"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Height="36" VerticalAlignment="Top">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="/Icons/dashboard.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Doanh thu giả định" Grid.Column="1" VerticalAlignment="Center"
+                                       FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="103*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="126*"/>
+                        <ColumnDefinition Width="284*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,86,0,0" TextWrapping="Wrap" Text="NHẬP GIÁ BÁN ĐIỆN"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <Image Margin="37,54,128,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Height="216" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <dxe:TextEdit  Text="{Binding testthu, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"  Margin="245,86,163,284" RenderTransformOrigin="0.177,0.351" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="436,86,0,0" TextWrapping="Wrap" Text="KWp"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,161,0,0" TextWrapping="Wrap" Text="Giả định tốc độ tăng giá"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <dxe:TextEdit Margin="245,161,163,209" RenderTransformOrigin="0.177,0.351" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="436,161,0,0" TextWrapping="Wrap" Text="%/năm"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="105" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,244,0,0" TextWrapping="Wrap" Text="Suy giảm công suất năm đầu tiên"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <dxe:TextEdit Margin="245,244,163,126" RenderTransformOrigin="0.177,0.351" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,327,0,-22" TextWrapping="Wrap" Text="Suy giảm công suất các năm sau"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <dxe:TextEdit Margin="245,327,163,43" RenderTransformOrigin="0.177,0.351" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="436,244,0,0" TextWrapping="Wrap" Text="%/năm"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="105" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="436,327,0,0" TextWrapping="Wrap" Text="%/năm"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="105" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,22,0,0" TextWrapping="Wrap" Text="TUỔI THỌ PIN"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <dxe:TextEdit  Text="{Binding testthu, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"  Margin="245,22,163,348" RenderTransformOrigin="0.177,0.351" Grid.Column="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="436,22,0,0" TextWrapping="Wrap" Text="Năm"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="3"/>
 
                 </Grid>
             </TabItem>
@@ -210,7 +253,7 @@
                     </DataTemplate>
                 </TabItem.HeaderTemplate>
                 <Grid>
-                    <Button x:Name="XemBaoCaoBtn" Margin="172,204,326,184" Content="Xem báo cáo" Click="XemBaoCaoBtn_Click"> </Button>
+                    <Button x:Name="XemBaoCaoBtn" Margin="172,204,326,184" Content="Xem báo cáo" Click="XemBaoCaoBtn_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Height="36" VerticalAlignment="Bottom">
