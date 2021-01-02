@@ -31,10 +31,10 @@ namespace SolarSolution
         }
         public void InitData()
         {
-            tienDientxt.Text = $"{NormalConsume.consumeMonth}";
-            congSuattxt.Text = $"{SolarCal.Kwp}";
-            kinhphitxt.Text = $"{SolarCal.ammountMonney}";
-            soGionangtxt.Text= $"{SolarCal.sunnyTime}";
+            //tienDientxt.Text = $"{NormalConsume.consumeMonth}";
+            //congSuattxt.Text = $"{SolarCal.Kwp}";
+            //kinhphitxt.Text = $"{SolarCal.ammountMonney}";
+            //soGionangtxt.Text= $"{SolarCal.sunnyTime}";
 
             // tenkhachhanglb.Text = tenkhachhang;
             // diachilb.Text = diachi;
