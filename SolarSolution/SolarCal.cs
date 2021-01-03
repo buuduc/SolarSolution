@@ -5,11 +5,11 @@ namespace SolarSolution
 {
     public class SolarCal : MainWindow
     {
-        private double ammountMonney;
-        private readonly double Kwp;
+        public double ammountMonney;
+        public double Kwp;
         private readonly SortedList rankElectricWorkPrivate = new SortedList();
         private readonly double sellforEVN;
-        private readonly double sunnyTime;
+        public  double sunnyTime;
         public double SurplusPrice;
         public double SurplusWork;
 
