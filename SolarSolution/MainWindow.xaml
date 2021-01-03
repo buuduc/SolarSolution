@@ -1,0 +1,265 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:SolarSolution"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing"
+        x:Class="SolarSolution.MainWindow"
+        mc:Ignorable="d" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Loaded="Loaded_Windows">
+    <StackPanel Background="WhiteSmoke">
+        <Grid Height="40">
+            <StackPanel HorizontalAlignment="Left" Margin="20 0">
+                <ComboBox FontSize="15" Width="50" Foreground="#FFA2A2A2" SelectedIndex="0" VerticalAlignment="Center">
+                    <ComboBoxItem Content="EN"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
+                <Button Content="FAQ" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Content="CONTACT" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Content="ORDER STATUS" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Content="MY ACCOUNT" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="ExistBtn">
+                    <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <TabControl x:Name="TabControlGeneral" TabStripPlacement="Top" HorizontalAlignment="Stretch" Height="480" SelectionChanged="TabSelectionChanged">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TabItem}">
+                                <StackPanel x:Name="Panel" Cursor="Hand" Orientation="Vertical">
+                                    <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="10,2"/>
+                                    <TextBlock x:Name="BottomBar" Background="Gold" Height="5" />
+                                </StackPanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="BottomBar" Property="Background" Value="Green" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="Green" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+            <TabItem >
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="D:\GitHub\SolarSolution\SolarSolution\Pictures\cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Bắt đầu" Grid.Column="1" VerticalAlignment="Center"
+                                   FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Margin="385,52,0,0" TextWrapping="Wrap" Text="PHẦN MỀM TÍNH TOÁN HIỆU QUẢ LẮP ĐẶT NĂNG LƯỢNG MẶT TRỜI "  TextAlignment="Center" VerticalAlignment="Top" Height="164" Width="562" FontSize="40" FontWeight="Bold"/>
+                    <Image Margin="30,95,703,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Height="216" VerticalAlignment="Top" Grid.ColumnSpan="5"/>
+                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Margin="419,320,0,-26" TextWrapping="Wrap" Text=" SẢN PHẨM CỦA CÔNG TY CỔ PHẦN CÔNG NGHỆ MARSHOUSE"  TextAlignment="Center" VerticalAlignment="Top" Height="126" Width="562" FontSize="20" FontWeight="Bold"/>
+
+
+                </Grid>
+            </TabItem>
+
+            <TabItem HorizontalAlignment="Right" Width="auto" Height="36" VerticalAlignment="Top">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="/Icons/dashboard.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Thông tin" Grid.Column="1" VerticalAlignment="Center"
+                                       FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85*"/>
+                        <ColumnDefinition Width="94*"/>
+                        <ColumnDefinition Width="349*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="2,207,0,0" TextWrapping="Wrap" Text="Bạn là ? "  TextAlignment="Center" VerticalAlignment="Top" Height="126" Width="207" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+                    <Image Margin="37,54,696,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Grid.ColumnSpan="3" Height="249" VerticalAlignment="Top"/>
+                    <StackPanel Margin="35,256,389,25" Grid.Column="2">
+                        <RadioButton Content="- Hộ gia đình" Checked="RadioButton_Checked" FontSize="20" />
+                        <RadioButton Content="- Diện kinh doanh" Checked="RadioButton_Checked" FontSize="20"/>
+                        <RadioButton Content="- Diện sản xuất" Checked="RadioButton_Checked" FontSize="20"/>
+
+                    </StackPanel>
+                    <FlowDocumentScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Column="2" Margin="326,207,34,10" RenderTransformOrigin="0.512,0.749">
+                        <FlowDocument Background="Blue">
+
+                            <Table x:Name="RankTable" CellSpacing="0"/>
+
+                        </FlowDocument>
+                    </FlowDocumentScrollViewer>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,81,0,0" TextWrapping="Wrap" Text="Tên khách hàng:"  TextAlignment="Center" VerticalAlignment="Top" Height="50" Width="269" FontSize="30" FontWeight="Bold" Grid.Column="2" RenderTransformOrigin="0.558,0.58"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="102,136,0,0" TextWrapping="Wrap" Text="Địa chỉ:  "  TextAlignment="Center" VerticalAlignment="Top" Height="50" Width="207" FontSize="30" FontWeight="Bold" Grid.Column="2" RenderTransformOrigin="0.657,0.44"/>
+                    <dxe:TextEdit x:Name="TenKhachHangtxt" Grid.Column="2" HorizontalAlignment="Left" Margin="284,86,0,0" VerticalAlignment="Top" Width="230" Height="50"/>
+                    <dxe:TextEdit x:Name="DiaChiTxt" Grid.Column="2" HorizontalAlignment="Left" Margin="284,136,0,0" VerticalAlignment="Top" Width="230" Height="50"/>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Height="36" VerticalAlignment="Bottom">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="/Icons/dashboard.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Tiêu thụ" Grid.Column="1" VerticalAlignment="Center"
+                                       FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="59*"/>
+                        <ColumnDefinition Width="113*"/>
+                        <ColumnDefinition Width="356*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="175,81,0,0" TextWrapping="Wrap" Text="Nhập số tiền điện chi trả hàng tháng:"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="601" FontSize="30" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Image Margin="37,54,696,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Height="216" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <dxe:TextEdit Margin="159,172,265,174" RenderTransformOrigin="0.177,0.351" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="452,186,0,0" TextWrapping="Wrap" Text="VNĐ"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Height="36" VerticalAlignment="Bottom">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="/Icons/dashboard.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Thông số lắp đặt" Grid.Column="1" VerticalAlignment="Center"
+                                       FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="103*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="410*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,78,0,0" TextWrapping="Wrap" Text="NHẬP SỐ KWp LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+                    <Image Margin="37,54,696,0" Source="/Pictures/cropped-cropped-Logo-MarsHouse-White-2048x1190-1-2-210x145.png" Stretch="Fill" RenderTransformOrigin="-0.618,0.555" Height="216" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <dxe:TextEdit x:Name="SoKWpLapDatTextBox"  Text="{Binding testthu, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"  Margin="497,78,163,292" RenderTransformOrigin="0.177,0.351" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="688,78,0,0" TextWrapping="Wrap" Text="KWp"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,161,0,0" TextWrapping="Wrap" Text="KINH PHÍ LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+                    <dxe:TextEdit Margin="497,161,163,209" RenderTransformOrigin="0.177,0.351" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="688,161,0,0" TextWrapping="Wrap" Text="VNĐ"  TextAlignment="Right" VerticalAlignment="Top" Height="50" Width="87" FontSize="30" FontWeight="Bold" RenderTransformOrigin="2.299,-1.32" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,244,0,0" TextWrapping="Wrap" Text="KHU VỰC LẮP ĐẶT"  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+                    <ComboBox SelectionChanged="khuvuctxtbox_Changed" x:Name="khuvucComboBox" Margin="497,248,127,124" FontSize="30" Height="48" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="124,327,0,-22" TextWrapping="Wrap" Text="SỐ GIỜ NẮNG: "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+                    <TextBlock x:Name="SogioNangTxt" HorizontalAlignment="Left" Margin="280,327,0,-22" TextWrapping="Wrap" Text="0: "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="368,327,0,-22" TextWrapping="Wrap" Text="GIỜ "  TextAlignment="Right" VerticalAlignment="Top" Height="115" Width="349" FontSize="30" FontWeight="Bold" Grid.Column="2"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Height="36" VerticalAlignment="Bottom">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="/Icons/dashboard.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Xuất báo cáo" Grid.Column="1" VerticalAlignment="Center"
+                                       FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid>
+                    <Button x:Name="XemBaoCaoBtn" Margin="172,204,326,184" Content="Xem báo cáo" Click="XemBaoCaoBtn_Click"> </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Height="36" VerticalAlignment="Bottom">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}">
+                                <!-- <Image Height="32" Grid.Column="0" Source="/Icons/dashboard.png" /> -->
+                            </Border>
+                            <TextBlock Margin="5,0,0,0" Text="Xem báo cáo" Grid.Column="1" VerticalAlignment="Center"
+                                       FontSize="20"  Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <Grid x:Name="ReportGrid">
+                    <dxp:DocumentPreviewControl x:Name="DocumentPreviewControl" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+        <!-- <Grid Height="100"> -->
+        <!--     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0"> -->
+        <!--         <Button Uid="0" Width="150" Content="HOME" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="1" Width="150" Content="SHOP" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="2" Width="150" Content="BLOG" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="3" Width="150" Content="PAGES" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="4" Width="150" Content="PRODUCTS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="5" Width="150" Content="BRANDS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--         <Button Uid="6" Width="150" Content="GIFT CARDS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/> -->
+        <!--     </StackPanel> -->
+        <!--     <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/> -->
+        <!-- </Grid> -->
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto">
+            <Button x:Name="PreviousBtn" Click="PreviousBtn_clicked" BorderThickness="0" Height="Auto" Margin="40,13,912,-61" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Pictures/Download-Previous-Button-PNG-Free-Download-420x164-For-Designing-Purpose.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="NextBtn" Click="NextBtn_clicked" Height="Auto" Margin="906,13,46,-61" BorderThickness="0" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Pictures/next-button-icon-12.jpg"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </StackPanel>
+</Window>
