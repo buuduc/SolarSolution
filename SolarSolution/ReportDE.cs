@@ -14,13 +14,13 @@ namespace SolarSolution
        public ReportDE()
 		{
 			InitializeComponent();
-            InitData();
+            
 		}
 
        public string tenkhachhang
        {
-           set => tenkhachhanglb.Text = $"{value}";
-       }
+            set => tenkhachhanglb.Text = $"{value}";
+        }
        public string diachi
        {
            set => diachilb.Text = $"{value}";
@@ -31,11 +31,11 @@ namespace SolarSolution
         }
         public void InitData()
         {
-            //tienDientxt.Text = $"{NormalConsume.consumeMonth}";
-            //congSuattxt.Text = $"{SolarCal.Kwp}";
-            //kinhphitxt.Text = $"{SolarCal.ammountMonney}";
-            //soGionangtxt.Text= $"{SolarCal.sunnyTime}";
-
+            tienDientxt.Text = $"{NormalConsume.consumeMonth}";
+            congSuattxt.Text = $"{SolarCal.Kwp}";
+            kinhphitxt.Text = $"{SolarCal.ammountMonney}";
+            soGionangtxt.Text = $"{SolarCal.sunnyTime}";
+            TableWattagePerYears();
             // tenkhachhanglb.Text = tenkhachhang;
             // diachilb.Text = diachi;
             // dienkinhdoanhlb.Text = dienkinhdoanh;
@@ -45,5 +45,33 @@ namespace SolarSolution
        {
            // rankTable.
        }
+
+       public void TableWattagePerYears()
+       {
+            //xrTable1.BeginInit();
+            xrTable1.Rows.Clear();
+            foreach (var k in SolarCal.rankElectricWorkPrivate)
+            {
+                XRTableRow row = new XRTableRow();
+                XRTableCell cell1 = new XRTableCell();
+                cell1.Text = $"{k.Key}";
+                row.Cells.Add(cell1);
+                XRTableCell cell2 = new XRTableCell();
+                
+                cell2.Text = $"{k.Value.}";
+                row.Cells.Add(cell2);
+                xrTable1.Rows.Add(row);
+
+            }
+            //W_Per_Years_Table.EndInit();
+
+
+
+            //xrTableCell4.Text = "fggg";
+            //xrTableCell5.Text = "fggg";
+            //xrTable1.EndInit();
+            
+
+        }
 	}
 }

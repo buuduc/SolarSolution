@@ -7,7 +7,9 @@ namespace SolarSolution
     {
         public double ammountMonney;
         public double Kwp;
-        private readonly SortedList rankElectricWorkPrivate = new SortedList();
+
+        public SortedList<object, rankElectricWork>
+            rankElectricWorkPrivate = new SortedList<object, rankElectricWork>();
         private readonly double sellforEVN;
         public  double sunnyTime;
         public double SurplusPrice;
@@ -62,11 +64,12 @@ namespace SolarSolution
             SurplusPrice = SurplusWork * sellforEVN;
         }
 
-        public void DoanhThu(int soNam, double phantramtanggia, double suygiamcongsuat1, double suygiamcongsuat)
+        private SortedList<object, DoanhThuStruct> doanhthuList;
+        public double DoanhThu(int soNam, double phantramtanggia, double suygiamcongsuat1, double suygiamcongsuat)
         {
             double cache = 0;
             double cache1 = 0;
-            var sortedList = new SortedList<object, DoanhThuStruct>();
+            doanhthuList = new SortedList<object, DoanhThuStruct>();
             for (var i = 1; i <= soNam; i++)
             {
                 var doanhThuStruct = new DoanhThuStruct();
@@ -76,7 +79,7 @@ namespace SolarSolution
                     cache = doanhThuStruct.SanLuong;
                     doanhThuStruct.DoanhThu = doanhThuStruct.SanLuong * sellforEVN;
                     cache1 = sellforEVN;
-                    sortedList.Add(i, doanhThuStruct);
+                    doanhthuList.Add(i, doanhThuStruct);
                 }
                 else
                 {
@@ -84,15 +87,16 @@ namespace SolarSolution
                     doanhThuStruct.SanLuong = cache * (1 - suygiamcongsuat / 100);
                     cache = doanhThuStruct.SanLuong;
                     doanhThuStruct.DoanhThu = doanhThuStruct.SanLuong * cache1;
-                    sortedList.Add(i, doanhThuStruct);
+                    doanhthuList.Add(i, doanhThuStruct);
                 }
             }
 
             double TongDoanhThu = 0;
-            foreach (var o in sortedList) TongDoanhThu += o.Value.DoanhThu;
+            foreach (var o in doanhthuList) TongDoanhThu += o.Value.DoanhThu;
+            return TongDoanhThu;
         }
 
-        private struct DoanhThuStruct
+        public struct DoanhThuStruct
         {
             public double SanLuong;
             public double DoanhThu;

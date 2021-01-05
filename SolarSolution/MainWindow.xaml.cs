@@ -19,6 +19,9 @@ using System.Text.RegularExpressions;
 using DevExpress.Xpf.Editors;
 using DevExpress.Xpf.Printing;
 
+using DevExpress.XtraReports.UI;
+
+
 
 namespace SolarSolution
 {
@@ -31,7 +34,7 @@ namespace SolarSolution
         private NormalConsume normalConsume;// đối tượng thể hiện số tiền chi trả 
         private SolarCal solarCal;
         private SortedList<object, rankElectricWork> rankE;
-        private ReportDE reportDe = new ReportDE();
+        
         public string DienKinhDoanh;
         public MainWindow() 
         {
@@ -262,19 +265,30 @@ namespace SolarSolution
 
         private void XemBaoCaoBtn_Click(object sender, RoutedEventArgs e)
         {
-            reportDe.tenkhachhang = TenKhachHangtxt.Text;
-            reportDe.diachi = DiaChiTxt.Text;
-            reportDe.dienkinhdoanh = DienKinhDoanh;
-            reportDe.NormalConsume = normalConsume;
-            reportDe.SolarCal = solarCal;
-            reportDe.CreateDocument();
-            DocumentPreviewControl.DocumentSource = reportDe;
-            normalConsume.Loaded();
+
+            ReportDE reportDe = new ReportDE();
 
             solarCal = new SolarCal(50, 4.1, 800000000, 1969);
             solarCal.savedMoney(normalConsume);
             solarCal.DoanhThu(25, 3, 3, 0.7);
+            reportDe.tenkhachhang = TenKhachHangtxt.Text;
+            reportDe.diachi = DiaChiTxt.Text;
+            reportDe.dienkinhdoanh = DienKinhDoanh;
+            reportDe.NormalConsume = normalConsume;
+            
+            reportDe.SolarCal = solarCal;
+            reportDe.InitData();
+            reportDe.CreateDocument();
+            //DocumentPreviewControl.DocumentSource = reportDe;
+
+            normalConsume.Loaded();
+            
+            reportDe.ShowPreview();
+
+
         }
+        
+    
     }
 
 }

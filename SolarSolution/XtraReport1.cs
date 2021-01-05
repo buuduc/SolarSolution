@@ -1,8 +1,8 @@
-﻿using System;
-using System.Drawing;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Collections;
 using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+using System.Drawing;
 
 namespace SolarSolution
 {
