@@ -63,10 +63,18 @@ namespace SolarSolution
             SurplusWork = KwM >= 0 ? KwM : 0;
             SurplusPrice = SurplusWork * sellforEVN;
         }
-
-        private SortedList<object, DoanhThuStruct> doanhthuList;
-        public double DoanhThu(int soNam, double phantramtanggia, double suygiamcongsuat1, double suygiamcongsuat)
+        public double TongDoanhThu = 0;
+        public int soNam;
+        public SortedList<object, DoanhThuStruct> doanhthuList;
+        public double phantramtanggia;
+        public double suygiamcongsuat1;
+        public double suygiamcongsuat;
+        public void DoanhThu(int soNam, double phantramtanggia, double suygiamcongsuat1, double suygiamcongsuat)
         {
+            this.soNam = soNam;
+            this.phantramtanggia = phantramtanggia;
+            this.suygiamcongsuat = suygiamcongsuat;
+            this.suygiamcongsuat1 = suygiamcongsuat1;
             double cache = 0;
             double cache1 = 0;
             doanhthuList = new SortedList<object, DoanhThuStruct>();
@@ -91,9 +99,9 @@ namespace SolarSolution
                 }
             }
 
-            double TongDoanhThu = 0;
+            
             foreach (var o in doanhthuList) TongDoanhThu += o.Value.DoanhThu;
-            return TongDoanhThu;
+            
         }
 
         public struct DoanhThuStruct
